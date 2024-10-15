@@ -382,6 +382,32 @@
         strengthMedium.className = "";
         strengthStrong.className = "";
 
+        // Error handling: Check for invalid passwords (only uppercase, lowercase, numbers, or special characters)
+        const isAllUppercase = /^[A-Z]+$/.test(password);
+        const isAllLowercase = /^[a-z]+$/.test(password);
+        const isAllNumbers = /^[0-9]+$/.test(password);
+        const isAllSpecialChars = /^[^a-zA-Z0-9]+$/.test(password);
+      
+        if (isAllUppercase) {
+          alert("Password contains only uppercase letters. Please include lowercase letters, digits, and special characters.");
+          return; // Exit the function if the password is invalid
+        }
+      
+        if (isAllLowercase) {
+          alert("Password contains only lowercase letters. Please include uppercase letters, digits, and special characters.");
+          return;
+        }
+      
+        if (isAllNumbers) {
+          alert("Password contains only numbers. Please include letters and special characters.");
+          return;
+        }
+      
+        if (isAllSpecialChars) {
+          alert("Password contains only special characters. Please include letters and digits.");
+          return;
+        }
+
         if (strength >= 1) strengthWeak.className = "weak";
         if (strength >= 3) strengthMedium.className = "medium";
         if (strength >= 5) strengthStrong.className = "strong";
